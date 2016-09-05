@@ -1,0 +1,61 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "Mr4ur60bgQJnQFfJY0dGtwWwMPE=",
+			"path": "golang.org/x/text/encoding",
+			"revision": "ceefd2213ed29504fff30155163c8f59827734f3",
+			"revisionTime": "2016-08-31T08:18:28Z"
+		},
+		{
+			"checksumSHA1": "zeHyHebIZl1tGuwGllIhjfci+wI=",
+			"path": "golang.org/x/text/encoding/internal",
+			"revision": "ceefd2213ed29504fff30155163c8f59827734f3",
+			"revisionTime": "2016-08-31T08:18:28Z"
+		},
+		{
+			"checksumSHA1": "TF4hoIqHVEAvOq67rfnSLSkcZ1Y=",
+			"path": "golang.org/x/text/encoding/internal/identifier",
+			"revision": "ceefd2213ed29504fff30155163c8f59827734f3",
+			"revisionTime": "2016-08-31T08:18:28Z"
+		},
+		{
+			"checksumSHA1": "G9LfJI9gySazd+MyyC6QbTHx4to=",
+			"path": "golang.org/x/text/encoding/unicode",
+			"revision": "ceefd2213ed29504fff30155163c8f59827734f3",
+			"revisionTime": "2016-08-31T08:18:28Z"
+		},
+		{
+			"checksumSHA1": "3JkLagg7UP4890bHn0Uld6GmO6M=",
+			"path": "golang.org/x/text/internal/gen",
+			"revision": "ceefd2213ed29504fff30155163c8f59827734f3",
+			"revisionTime": "2016-08-31T08:18:28Z"
+		},
+		{
+			"checksumSHA1": "Qk7dljcrEK1BJkAEZguxAbG9dSo=",
+			"path": "golang.org/x/text/internal/utf8internal",
+			"revision": "ceefd2213ed29504fff30155163c8f59827734f3",
+			"revisionTime": "2016-08-31T08:18:28Z"
+		},
+		{
+			"checksumSHA1": "cQ4+8mXpYioml5/hO7ZyeECoFJc=",
+			"path": "golang.org/x/text/runes",
+			"revision": "ceefd2213ed29504fff30155163c8f59827734f3",
+			"revisionTime": "2016-08-31T08:18:28Z"
+		},
+		{
+			"checksumSHA1": "TZDHZj3zWDc5LKqpoLamOKt6Nmo=",
+			"path": "golang.org/x/text/transform",
+			"revision": "ceefd2213ed29504fff30155163c8f59827734f3",
+			"revisionTime": "2016-08-31T08:18:28Z"
+		},
+		{
+			"checksumSHA1": "n94g6qdzv0fgQFGelH4/HXOthl0=",
+			"path": "golang.org/x/text/unicode/cldr",
+			"revision": "ceefd2213ed29504fff30155163c8f59827734f3",
+			"revisionTime": "2016-08-31T08:18:28Z"
+		}
+	],
+	"rootPath": "github.com/dutchcoders/filex"
+}

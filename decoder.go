@@ -1,4 +1,4 @@
-package main
+package evtxparser
 
 import (
 	"encoding/binary"
@@ -18,20 +18,28 @@ func (e ErrDecoderTooShort) Error() string {
 type Decoder interface {
 	HasBytes(size int) bool
 
-	Byte() byte
-	Uint8() uint8
 	PeekUint8() uint8
 	PeekUint16() uint16
+
+	Byte() byte
+
+	Int8() int8
 	Int16() int16
+	Int32() int32
 	Int64() int64
+
+	Uint8() uint8
 	Uint16() uint16
 	Uint32() uint32
 	Uint64() uint64
+
 	IEEE754_Float32() float32
 	IEEE754_Float64() float64
+
 	CString() string
-	Copy([]byte)
 	Data() []byte
+
+	Copy([]byte)
 
 	LastError() error
 	SetLastError(error)
@@ -39,8 +47,11 @@ type Decoder interface {
 	Skip(int)
 	Align(int)
 	Seek(int) int
-	Offset() int
+
 	StartOffset() int
+	Offset() int
+
+	NewDecoder() Decoder
 
 	Dump()
 
@@ -63,6 +74,15 @@ type DefaultDecoder struct {
 	lastError   error
 	byteOrder   binary.ByteOrder
 	data        []byte
+}
+
+func (d *DefaultDecoder) NewDecoder() Decoder {
+	return &DefaultDecoder{
+		offset:      0,
+		startOffset: 0,
+		byteOrder:   d.byteOrder,
+		data:        d.data[d.offset:],
+	}
 }
 
 func (d *DefaultDecoder) SetByteOrder(byteOrder binary.ByteOrder) binary.ByteOrder {
@@ -143,6 +163,22 @@ func (d *DefaultDecoder) PeekUint8() uint8 {
 	}
 
 	return uint8(d.data[d.offset])
+}
+
+func (d *DefaultDecoder) Int8() int8 {
+	if d.lastError != nil {
+		return 0
+	}
+
+	if !d.HasBytes(1) {
+		return 0
+	}
+
+	defer func() {
+		d.offset += 1
+	}()
+
+	return int8(uint8(d.data[d.offset]))
 }
 
 func (d *DefaultDecoder) Uint8() uint8 {
@@ -239,6 +275,22 @@ func (d *DefaultDecoder) CString() string {
 
 	d.offset += 2
 	return str
+}
+
+func (d *DefaultDecoder) Int32() int32 {
+	if d.lastError != nil {
+		return 0
+	}
+
+	if !d.HasBytes(4) {
+		return 0
+	}
+
+	defer func() {
+		d.offset += 4
+	}()
+
+	return int32(d.byteOrder.Uint32(d.data[d.offset : d.offset+4]))
 }
 
 func (d *DefaultDecoder) Uint32() uint32 {
